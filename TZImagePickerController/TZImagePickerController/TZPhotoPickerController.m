@@ -564,12 +564,9 @@ static CGFloat itemMargin = 5;
         [tzImagePickerVc.pickerDelegate imagePickerController:tzImagePickerVc didFinishPickingPhotos:photos sourceAssets:assets isSelectOriginalPhoto:_isSelectOriginalPhoto infos:infoArr];
     }
     
-//    if (tzImagePickerVc.isFromExtension) {
-//        [self callFromExtensionWithPhotos:photos assets:assets];
-//    }
-    
-    [self callFromExtensionWithPhotos:photos assets:assets];
-    
+    if (tzImagePickerVc.isFromExtension) {
+        [self callFromExtensionWithPhotos:photos assets:assets];
+    }
     
     if (tzImagePickerVc.didFinishPickingPhotosHandle) {
         tzImagePickerVc.didFinishPickingPhotosHandle(photos,assets,_isSelectOriginalPhoto);
@@ -578,30 +575,6 @@ static CGFloat itemMargin = 5;
         tzImagePickerVc.didFinishPickingPhotosWithInfosHandle(photos,assets,_isSelectOriginalPhoto,infoArr);
     }
 }
-
-//- (void)one {
-//    /// 1、组合队列
-//    dispatch_group_t downloadGroup = dispatch_group_create();
-//    NSArray *array = [self dataArray];
-//    for (int i = 0; i < array.count; i++) {
-//        NSLog(@"请求--- 前 %d",i);
-//        /// 2、Enter
-//        dispatch_group_enter(downloadGroup);
-//        NSURL *URL = [NSURL URLWithString:array[i]];
-//        NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-//        NSURLSession *session = [NSURLSession sharedSession];
-//        NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-//            NSLog(@"请求--- 后 %d",i);
-//            /// 3、Leave
-//            dispatch_group_leave(downloadGroup);
-//        }];
-//        [task resume];
-//    }
-//    /// 结束统一处理
-//    dispatch_group_notify(downloadGroup, dispatch_get_main_queue(), ^{
-//        NSLog(@"请求--- 结束统一处理");
-//    });
-//}
 
 
 - (void)callFromExtensionWithPhotos:(NSArray *)photos assets:(NSArray *)assets {

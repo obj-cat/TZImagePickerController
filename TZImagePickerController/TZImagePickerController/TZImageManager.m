@@ -1082,7 +1082,7 @@ static dispatch_once_t onceToken;
 
 @implementation TZMedia
 
-- (instancetype)initWithIndex:(NSInteger)index imagePath:(NSString *)imagePath videoPath:(NSString *)videoPath baseStr:(NSString *)baseStr duration:(NSInteger)duration {
+- (instancetype)initWithIndex:(NSInteger)index imagePath:(NSString *)imagePath videoPath:(NSString *)videoPath baseStr:(NSString *)baseStr duration:(NSInteger)duration isVideo:(BOOL)isVideo {
     self = [super init];
     if (self) {
         _idx = index;
@@ -1090,6 +1090,7 @@ static dispatch_once_t onceToken;
         _videoPath = videoPath;
         _imageBaseStr = baseStr;
         _duration = duration;
+        _isVideo = isVideo;
     }
     
     return self;
@@ -1099,17 +1100,19 @@ static dispatch_once_t onceToken;
 
 @implementation TZMediaManager
 
-+ (instancetype)shared {
-    static TZMediaManager *_shared;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _shared = [[TZMediaManager alloc] init];
-    });
-    
-    return _shared;
-}
+//+ (instancetype)shared {
+//    static TZMediaManager *_shared;
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//        _shared = [[TZMediaManager alloc] init];
+//    });
+//    
+//    return _shared;
+//}
 
-+ (void)saveMedias:(NSInteger)idx asset:(PHAsset *)asset halfPath:(NSString *)halfPath completed:(TZMediaManagerCompletedBlock)completed {
++ (void)saveMedias:(NSInteger)idx asset:(PHAsset * _Nullable)asset
+          halfPath:(NSString * _Nullable)halfPath
+         completed:(TZMediaManagerCompletedBlock _Nullable )completed {
     PHAssetResource *assetRescource = [[PHAssetResource assetResourcesForAsset:asset] firstObject];
     NSString *rawFileName = assetRescource.originalFilename;
     NSArray *files = [rawFileName componentsSeparatedByString:@"."];
@@ -1130,14 +1133,14 @@ static dispatch_once_t onceToken;
     if ([TZMediaManager isFileExistsAtPath:filePath] == YES) {
         if (isVideo) {
             if ([TZMediaManager isFileExistsAtPath:coverPath] == true) {
-                item = [[TZMedia alloc] initWithIndex:idx imagePath:coverPath videoPath:filePath baseStr:coverPath duration:duration];
+                item = [[TZMedia alloc] initWithIndex:idx imagePath:coverPath videoPath:filePath baseStr:coverPath duration:duration isVideo:isVideo];
                 completed(item, @"沙盒里读取视频和图片", YES);
             } else {
                 UIImage *coverImage = [[TZImageManager manager] getImageWithVideoURL:[NSURL fileURLWithPath:filePath]];
                 //保存操作
                 BOOL result = [UIImagePNGRepresentation(coverImage)writeToFile:coverPath atomically:YES];
                 if (result == YES) {
-                    item = [[TZMedia alloc] initWithIndex:idx imagePath:coverPath videoPath:filePath baseStr:[TZMediaManager obtainBase64String:coverPath] duration:duration];
+                    item = [[TZMedia alloc] initWithIndex:idx imagePath:coverPath videoPath:filePath baseStr:[TZMediaManager obtainBase64String:coverPath] duration:duration isVideo:isVideo];
                     completed(item, @"视频封面图片保存成功", YES);
                     NSLog(@"保存成功 >>>>> %@ >>>>> %@", coverName, coverPath);
                 } else {
@@ -1145,7 +1148,7 @@ static dispatch_once_t onceToken;
                 }
             }
         } else {
-            item = [[TZMedia alloc] initWithIndex:idx imagePath:filePath videoPath:@"" baseStr:[TZMediaManager obtainBase64String:filePath] duration:0];
+            item = [[TZMedia alloc] initWithIndex:idx imagePath:filePath videoPath:@"" baseStr:[TZMediaManager obtainBase64String:filePath] duration:0 isVideo:isVideo];
             completed(item, @"获取沙盒中已转化的图片", YES);
         }
     } else {
@@ -1158,7 +1161,7 @@ static dispatch_once_t onceToken;
                     //保存操作
                     BOOL result =[UIImagePNGRepresentation(coverImage)writeToFile:coverPath atomically:YES];
                     if (result == YES) {
-                        item = [[TZMedia alloc] initWithIndex:idx imagePath:coverPath videoPath:filePath baseStr:[TZMediaManager obtainBase64String:coverPath] duration:duration];
+                        item = [[TZMedia alloc] initWithIndex:idx imagePath:coverPath videoPath:filePath baseStr:[TZMediaManager obtainBase64String:coverPath] duration:duration isVideo:isVideo];
                          completed(item, @"视频和封面图片保存成功", YES);
                          NSLog(@"保存成功 >>>>> %@ >>>>> %@", coverName, coverPath);
                         } else {
@@ -1166,7 +1169,7 @@ static dispatch_once_t onceToken;
                             NSLog(@"保存失败");
                         }
                 } else {
-                    TZMedia *item = [[TZMedia alloc] initWithIndex:idx imagePath:filePath videoPath:@"" baseStr:[TZMediaManager obtainBase64String:filePath] duration:0];
+                    TZMedia *item = [[TZMedia alloc] initWithIndex:idx imagePath:filePath videoPath:@"" baseStr:[TZMediaManager obtainBase64String:filePath] duration:0 isVideo:isVideo];
                     completed(item, @"图片保存成功", YES);
                 }
             } else {
@@ -1177,6 +1180,7 @@ static dispatch_once_t onceToken;
     }
     
 }
+
 
 + (NSString *)obtainBase64String:(NSString *)imagePath {
     UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
@@ -1234,7 +1238,7 @@ static dispatch_once_t onceToken;
     return path;
 }
 
-+ (NSString *)obtainFilePath:(NSString *)halfPath fileName:(NSString *)fileName {
++ (NSString * _Nullable)obtainFilePath:(NSString * _Nullable)halfPath fileName:(NSString * _Nullable)fileName {
     NSString *filePath = [TZMediaManager obtainFilePath:halfPath];
     return [NSString stringWithFormat:@"%@%@", filePath, fileName];
 }

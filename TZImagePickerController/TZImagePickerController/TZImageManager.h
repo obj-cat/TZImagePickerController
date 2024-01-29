@@ -145,8 +145,9 @@
 @property (nonatomic, copy)   NSString *videoPath; // 视频转存后的地址
 @property (nonatomic, copy)   NSString *imageBaseStr; // 模糊图片字符串
 @property (nonatomic, assign) NSInteger duration; // 视频时长
+@property (nonatomic, assign) BOOL isVideo; // 是否是视频
 
-- (instancetype)initWithIndex:(NSInteger)index imagePath:(NSString *)imagePath videoPath:(NSString *)videoPath baseStr:(NSString *)baseStr duration:(NSInteger)duration;
+- (instancetype)initWithIndex:(NSInteger)index imagePath:(NSString *)imagePath videoPath:(NSString *)videoPath baseStr:(NSString *)baseStr duration:(NSInteger)duration isVideo:(BOOL)isVideo;
 
 @end
 
@@ -155,10 +156,10 @@ typedef void(^TZMediaManagerCompletedBlock)(TZMedia * _Nullable media, NSString 
 
 @interface TZMediaManager : NSObject
 
-+ (instancetype)shared;
+//+ (instancetype)shared;
 
-+ (NSString *)obtainFilePath:(NSString *)halfPath fileName:(NSString *)fileName;
++ (NSString * _Nullable)obtainFilePath:(NSString * _Nullable)halfPath fileName:(NSString * _Nullable)fileName;
 
-+ (void)saveMedias:(NSInteger)idx asset:(PHAsset *)asset halfPath:(NSString *)halfPath completed:(TZMediaManagerCompletedBlock)completed;
++ (void)saveMedias:(NSInteger)idx asset:(PHAsset * _Nullable)asset halfPath:(NSString * _Nullable)halfPath completed:(TZMediaManagerCompletedBlock _Nullable )completed;
 
 @end

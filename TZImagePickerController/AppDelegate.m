@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "TZImagePickerController.h"
 
+
 @interface AppDelegate ()
 
 @end
@@ -18,7 +19,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // 打开下面这句代码，使用导航栏控制器作为rootViewController
-    // [self useNavControllerAsRoot];
+    
+    NSString *path = [TZMediaManager obtainFilePath:@"123/sdaf/123/" fileName:@"haha.jped"];
+    NSLog(@"");
+    
+//     [self useNavControllerAsRoot];
     return YES;
 }
 

@@ -10,4 +10,17 @@
 
 @implementation TZMedia
 
+- (instancetype)initWithIndex:(NSInteger)index imagePath:(NSString *)imagePath videoPath:(NSString *)videoPath baseStr:(NSString *)baseStr duration:(NSInteger)duration {
+    self = [super init];
+    if (self) {
+        _idx = index;
+        _imagePath = imagePath;
+        _videoPath = videoPath;
+        _imageBaseStr = baseStr;
+        _duration = duration;
+    }
+    
+    return self;
+}
+
 @end

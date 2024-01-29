@@ -19,6 +19,7 @@
 #import "TZImageRequestOperation.h"
 #import "TZAuthLimitedFooterTipView.h"
 #import <PhotosUI/PhotosUI.h>
+
 @interface TZPhotoPickerController ()<UICollectionViewDataSource,UICollectionViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate, PHPhotoLibraryChangeObserver> {
     NSMutableArray *_models;
     
@@ -526,7 +527,7 @@ static CGFloat itemMargin = 5;
     [tzImagePickerVc hideProgressHUD];
     _doneButton.enabled = YES;
     self.isFetchingMedia = NO;
-
+    
     if (tzImagePickerVc.autoDismiss) {
         [self.navigationController dismissViewControllerAnimated:YES completion:^{
             [self callDelegateMethodWithPhotos:photos assets:assets infoArr:infoArr];
@@ -538,6 +539,9 @@ static CGFloat itemMargin = 5;
 
 - (void)callDelegateMethodWithPhotos:(NSArray *)photos assets:(NSArray *)assets infoArr:(NSArray *)infoArr {
     TZImagePickerController *tzImagePickerVc = (TZImagePickerController *)self.navigationController;
+    
+    
+    
     if (tzImagePickerVc.allowPickingVideo && tzImagePickerVc.maxImagesCount == 1) {
         if ([[TZImageManager manager] isVideo:[assets firstObject]]) {
             BOOL triggered = NO;
@@ -559,12 +563,89 @@ static CGFloat itemMargin = 5;
     if ([tzImagePickerVc.pickerDelegate respondsToSelector:@selector(imagePickerController:didFinishPickingPhotos:sourceAssets:isSelectOriginalPhoto:infos:)]) {
         [tzImagePickerVc.pickerDelegate imagePickerController:tzImagePickerVc didFinishPickingPhotos:photos sourceAssets:assets isSelectOriginalPhoto:_isSelectOriginalPhoto infos:infoArr];
     }
+    
+//    if (tzImagePickerVc.isFromExtension) {
+//        [self callFromExtensionWithPhotos:photos assets:assets];
+//    }
+    
+    [self callFromExtensionWithPhotos:photos assets:assets];
+    
+    
     if (tzImagePickerVc.didFinishPickingPhotosHandle) {
         tzImagePickerVc.didFinishPickingPhotosHandle(photos,assets,_isSelectOriginalPhoto);
     }
     if (tzImagePickerVc.didFinishPickingPhotosWithInfosHandle) {
         tzImagePickerVc.didFinishPickingPhotosWithInfosHandle(photos,assets,_isSelectOriginalPhoto,infoArr);
     }
+}
+
+//- (void)one {
+//    /// 1、组合队列
+//    dispatch_group_t downloadGroup = dispatch_group_create();
+//    NSArray *array = [self dataArray];
+//    for (int i = 0; i < array.count; i++) {
+//        NSLog(@"请求--- 前 %d",i);
+//        /// 2、Enter
+//        dispatch_group_enter(downloadGroup);
+//        NSURL *URL = [NSURL URLWithString:array[i]];
+//        NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+//        NSURLSession *session = [NSURLSession sharedSession];
+//        NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+//            NSLog(@"请求--- 后 %d",i);
+//            /// 3、Leave
+//            dispatch_group_leave(downloadGroup);
+//        }];
+//        [task resume];
+//    }
+//    /// 结束统一处理
+//    dispatch_group_notify(downloadGroup, dispatch_get_main_queue(), ^{
+//        NSLog(@"请求--- 结束统一处理");
+//    });
+//}
+
+
+- (void)callFromExtensionWithPhotos:(NSArray *)photos assets:(NSArray *)assets {
+    TZImagePickerController *tzImagePickerVc = (TZImagePickerController *)self.navigationController;
+    NSMutableArray *items = [@[] mutableCopy];
+    
+    /// 1、组合队列
+    dispatch_group_t group = dispatch_group_create();
+    
+    for (NSInteger i = 0; i < [assets count]; i++) {
+        dispatch_group_enter(group);
+        [TZMediaManager saveMedias:i asset:assets[i] halfPath:tzImagePickerVc.fileExtensionPath completed:^(TZMedia * _Nullable media, NSString * _Nullable msg, BOOL finished) {
+            if (finished && [items containsObject:media] == false) {
+                [items addObject:media];
+            } else {
+                NSLog(@"");
+            }
+            dispatch_group_leave(group);
+        }];
+    }
+    
+    /// 结束统一处理
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        
+        NSArray *array = [items sortedArrayUsingComparator:^NSComparisonResult(TZMedia  * _Nullable obj1, TZMedia   * _Nullable obj2) {
+            if (obj1.idx < obj2.idx) {
+                return NSOrderedAscending;
+            } else {
+                return NSOrderedDescending;
+            }
+        }];
+        
+//        NSArray *array = [NSArray arrayWithArray:items];
+        [items removeAllObjects];
+        if ([tzImagePickerVc.pickerDelegate respondsToSelector:@selector(imagePickerController:didFinishPickingPhotos:sourceAssets:isSelectOriginalPhoto:items:)]) {
+            [tzImagePickerVc.pickerDelegate imagePickerController:tzImagePickerVc didFinishPickingPhotos:photos sourceAssets:assets isSelectOriginalPhoto:self->_isSelectOriginalPhoto items:array];
+            
+        }
+    });
+
+}
+
+- (void)handleExtensionsWithPhotos:(NSArray *)photos assets:(NSArray *)assets {
+    
 }
 
 #pragma mark - UICollectionViewDataSource && Delegate

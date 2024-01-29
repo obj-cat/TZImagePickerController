@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class TZAlbumModel;
+//#import "TZMediaManager.h"
+//#import "TZMedia.h"
+
+@class TZAlbumModel, TZMediaManager, TZMedia;
 @interface TZPhotoPickerController : UIViewController
 
 @property (nonatomic, assign) BOOL isFirstAppear;

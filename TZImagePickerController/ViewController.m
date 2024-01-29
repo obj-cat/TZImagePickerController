@@ -356,6 +356,8 @@
     imagePickerVc.showSelectBtn = NO;
     imagePickerVc.allowCrop = self.allowCropSwitch.isOn;
     imagePickerVc.needCircleCrop = self.needCircleCropSwitch.isOn;
+    imagePickerVc.fileExtensionPath = @"/path/image/";
+    imagePickerVc.isFromExtension = NO;
     // 设置竖屏下的裁剪尺寸
     NSInteger left = 30;
     NSInteger widthHeight = self.view.tz_width - 2 * left;
@@ -594,14 +596,22 @@
     _selectedAssets = [NSMutableArray arrayWithArray:assets];
     _isSelectOriginalPhoto = isSelectOriginalPhoto;
     [_collectionView reloadData];
+    
+    
     // _collectionView.contentSize = CGSizeMake(0, ((_selectedPhotos.count + 2) / 3 ) * (_margin + _itemWH));
 
     // 1.打印图片名字
     [self printAssetsName:assets];
     // 2.图片位置信息
-    for (PHAsset *phAsset in assets) {
-        NSLog(@"location:%@",phAsset.location);
-    }
+    
+//    for (NSInteger i = 0; i < assets.count; i++) {
+//        PHAsset *asset = assets[i];
+//        
+//        [TZMediaManager saveMedias:i asset:asset halfPath:@"nihao/image/" completed:^(TZMedia * _Nullable media, NSString * _Nullable msg, BOOL finished) {
+//            NSLog(@"成功 = %d, msg = %@", finished, msg);
+//            NSLog(@"");
+//        }];
+//    }
 
     // 3. 获取原图的示例，用队列限制最大并发为1，避免内存暴增
     self.operationQueue = [[NSOperationQueue alloc] init];
@@ -617,6 +627,13 @@
         }];
         [self.operationQueue addOperation:operation];
     }
+}
+
+- (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray<UIImage *> *)photos sourceAssets:(NSArray *)assets isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto items:(NSArray<TZMedia *> *)items {
+    for (TZMedia *media in items) {
+        NSLog(@"索引值的顺序 >>>>> %zd", media.idx);
+    }
+    NSLog(@"");
 }
 
 /// 如果用户选择了某张照片下面的代理方法会被执行

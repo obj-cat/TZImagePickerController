@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D57BDC42B674627003CAD71 /* TZMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D57BDC32B674627003CAD71 /* TZMedia.m */; };
 		570A348C26D7275C000EEF2E /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 570A348B26D7275C000EEF2E /* Photos.framework */; };
 		570A348E26D72762000EEF2E /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 570A348D26D72762000EEF2E /* PhotosUI.framework */; };
 		570A349026D72768000EEF2E /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 570A348F26D72768000EEF2E /* PhotosUI.framework */; };
@@ -122,6 +123,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4D57BDC22B674627003CAD71 /* TZMedia.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZMedia.h; sourceTree = "<group>"; };
+		4D57BDC32B674627003CAD71 /* TZMedia.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TZMedia.m; sourceTree = "<group>"; };
 		570A348B26D7275C000EEF2E /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/System/Library/Frameworks/Photos.framework; sourceTree = DEVELOPER_DIR; };
 		570A348D26D72762000EEF2E /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/System/iOSSupport/System/Library/Frameworks/PhotosUI.framework; sourceTree = DEVELOPER_DIR; };
 		570A348F26D72768000EEF2E /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
@@ -335,41 +338,43 @@
 		900EEFF51C2BBF7600EA709B /* TZImagePickerController */ = {
 			isa = PBXGroup;
 			children = (
-				900EEFF61C2BBF9500EA709B /* TZImagePickerController.h */,
-				900EEFF71C2BBF9500EA709B /* TZImagePickerController.m */,
-				900EEFFC1C2BD58B00EA709B /* TZPhotoPickerController.h */,
-				900EEFFD1C2BD58B00EA709B /* TZPhotoPickerController.m */,
+				6D5358CB1D64600F00928CC6 /* NSBundle+TZImagePicker.h */,
+				6D5358CC1D64600F00928CC6 /* NSBundle+TZImagePicker.m */,
+				6DC358641CC8BAE300898D29 /* Resources */,
 				900EEFFF1C2BD7E400EA709B /* TZAssetCell.h */,
 				900EF0001C2BD7E400EA709B /* TZAssetCell.m */,
 				900EF00D1C2C0B1100EA709B /* TZAssetModel.h */,
 				900EF00E1C2C0B1100EA709B /* TZAssetModel.m */,
-				900EF0101C2C107400EA709B /* TZPhotoPreviewController.h */,
-				900EF0111C2C107400EA709B /* TZPhotoPreviewController.m */,
-				900EF0131C2C134800EA709B /* TZPhotoPreviewCell.h */,
-				900EF0141C2C134900EA709B /* TZPhotoPreviewCell.m */,
-				90CE84B51C3BABB6003D0779 /* TZVideoPlayerController.h */,
-				90CE84B61C3BABB6003D0779 /* TZVideoPlayerController.m */,
+				57DD378826D61592005090FF /* TZAuthLimitedFooterTipView.h */,
+				57DD378926D61592005090FF /* TZAuthLimitedFooterTipView.m */,
 				6D46082F1DFFC60D004FB009 /* TZGifPhotoPreviewController.h */,
 				6D4608301DFFC60D004FB009 /* TZGifPhotoPreviewController.m */,
+				6DC84D081DF5358500A107A9 /* TZImageCropManager.h */,
+				6DC84D091DF5358500A107A9 /* TZImageCropManager.m */,
+				90CE84AC1C3A89EF003D0779 /* TZImageManager.h */,
+				90CE84AD1C3A89EF003D0779 /* TZImageManager.m */,
+				900EEFF61C2BBF9500EA709B /* TZImagePickerController.h */,
+				900EEFF71C2BBF9500EA709B /* TZImagePickerController.m */,
+				901CC3F821CB757500C55443 /* TZImageRequestOperation.h */,
+				901CC3F921CB757500C55443 /* TZImageRequestOperation.m */,
+				900EEFFC1C2BD58B00EA709B /* TZPhotoPickerController.h */,
+				900EEFFD1C2BD58B00EA709B /* TZPhotoPickerController.m */,
+				900EF0131C2C134800EA709B /* TZPhotoPreviewCell.h */,
+				900EF0141C2C134900EA709B /* TZPhotoPreviewCell.m */,
+				900EF0101C2C107400EA709B /* TZPhotoPreviewController.h */,
+				900EF0111C2C107400EA709B /* TZPhotoPreviewController.m */,
+				6DD050291DF659ED0057C78D /* TZProgressView.h */,
+				6DD0502A1DF659ED0057C78D /* TZProgressView.m */,
 				B606A9C3265FD53200F5493E /* TZVideoCropController.h */,
 				B606A9C2265FD53200F5493E /* TZVideoCropController.m */,
 				B662C36D2662914D006A672A /* TZVideoEditedPreviewController.h */,
 				B662C36E2662914D006A672A /* TZVideoEditedPreviewController.m */,
-				6DD050291DF659ED0057C78D /* TZProgressView.h */,
-				6DD0502A1DF659ED0057C78D /* TZProgressView.m */,
-				57DD378826D61592005090FF /* TZAuthLimitedFooterTipView.h */,
-				57DD378926D61592005090FF /* TZAuthLimitedFooterTipView.m */,
-				90CE84AC1C3A89EF003D0779 /* TZImageManager.h */,
-				90CE84AD1C3A89EF003D0779 /* TZImageManager.m */,
-				901CC3F821CB757500C55443 /* TZImageRequestOperation.h */,
-				901CC3F921CB757500C55443 /* TZImageRequestOperation.m */,
-				6DC84D081DF5358500A107A9 /* TZImageCropManager.h */,
-				6DC84D091DF5358500A107A9 /* TZImageCropManager.m */,
+				90CE84B51C3BABB6003D0779 /* TZVideoPlayerController.h */,
+				90CE84B61C3BABB6003D0779 /* TZVideoPlayerController.m */,
 				9005E2B2257A462E002A8682 /* UIView+TZLayout.h */,
 				9005E2B1257A462E002A8682 /* UIView+TZLayout.m */,
-				6D5358CB1D64600F00928CC6 /* NSBundle+TZImagePicker.h */,
-				6D5358CC1D64600F00928CC6 /* NSBundle+TZImagePicker.m */,
-				6DC358641CC8BAE300898D29 /* Resources */,
+				4D57BDC22B674627003CAD71 /* TZMedia.h */,
+				4D57BDC32B674627003CAD71 /* TZMedia.m */,
 			);
 			path = TZImagePickerController;
 			sourceTree = "<group>";
@@ -633,6 +638,7 @@
 				9019FD8D21EC25D7009ADEAE /* TZImageUploadOperation.m in Sources */,
 				900E65811C2BB8D5003D9A9E /* main.m in Sources */,
 				900EF0121C2C107400EA709B /* TZPhotoPreviewController.m in Sources */,
+				4D57BDC42B674627003CAD71 /* TZMedia.m in Sources */,
 				901CC3FC21CB758500C55443 /* TZImageRequestOperation.m in Sources */,
 				6D5358CD1D64600F00928CC6 /* NSBundle+TZImagePicker.m in Sources */,
 				900EEFF81C2BBF9500EA709B /* TZImagePickerController.m in Sources */,

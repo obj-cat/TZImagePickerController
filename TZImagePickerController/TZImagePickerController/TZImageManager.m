@@ -1114,18 +1114,42 @@ static dispatch_once_t onceToken;
           halfPath:(NSString * _Nullable)halfPath
          completed:(TZMediaManagerCompletedBlock _Nullable )completed {
     PHAssetResource *assetRescource = [[PHAssetResource assetResourcesForAsset:asset] firstObject];
-    NSString *rawFileName = assetRescource.originalFilename;
-    NSArray *files = [rawFileName componentsSeparatedByString:@"."];
-    NSString *fileName = [NSString stringWithFormat:@"%@.%@", [files.firstObject tzmd5String], files.lastObject];
+//    NSString *rawFileName = assetRescource.originalFilename;
+//    NSArray *files = [rawFileName componentsSeparatedByString:@"."];
+//    NSString *fileName = [NSString stringWithFormat:@"%@.%@", [files.firstObject tzmd5String], [files.lastObject lowercaseString]];
+//    NSString *filePath = [TZMediaManager obtainFilePath:halfPath fileName:fileName];
+//    NSString *coverName = @"jpeg";
+//    NSString *coverPath = @"";
+//    NSInteger duration = 0;
+    __block TZMedia *item;
+    
+    NSString *mediaName = [asset valueForKey:@"filename"];
+    NSString *mediaType = [asset valueForKey:@"uniformTypeIdentifier"];
+    NSString *extensionName = @"";
+    
+    if (asset.mediaType == PHAssetMediaTypeVideo) {
+        extensionName = @".mp4";
+    } else if (asset.mediaType == PHAssetMediaTypeImage) {
+        if ([mediaType hasSuffix:@".webp"]) {
+            extensionName = @".webp";
+        } else if ([mediaType hasSuffix:@".gif"]) {
+            extensionName = @".gif";
+        } else {
+            extensionName = @".jpeg";
+        }
+    } else {
+        return;
+    }
+    
+    NSString *fileName = [NSString stringWithFormat:@"%@%@",[mediaName tzmd5String], extensionName];
     NSString *filePath = [TZMediaManager obtainFilePath:halfPath fileName:fileName];
-    NSString *coverName = @"png";
+    NSString *coverName = @"jpeg";
     NSString *coverPath = @"";
     NSInteger duration = 0;
-    __block TZMedia *item;
     
     BOOL isVideo = asset.mediaType == PHAssetMediaTypeVideo;
     if (isVideo) {
-        coverName = [NSString stringWithFormat:@"%@.%@", [files.firstObject tzmd5String], @"png"];
+        coverName = [NSString stringWithFormat:@"%@.%@", [mediaName tzmd5String], @"jpeg"];
         coverPath = [TZMediaManager obtainFilePath:halfPath fileName:coverName];
         duration = ceilf([asset duration]);
     }
@@ -1138,7 +1162,7 @@ static dispatch_once_t onceToken;
             } else {
                 UIImage *coverImage = [[TZImageManager manager] getImageWithVideoURL:[NSURL fileURLWithPath:filePath]];
                 //保存操作
-                BOOL result = [UIImagePNGRepresentation(coverImage)writeToFile:coverPath atomically:YES];
+                BOOL result = UIImageJPEGRepresentation(coverImage, 0.7);
                 if (result == YES) {
                     item = [[TZMedia alloc] initWithIndex:idx imagePath:coverPath videoPath:filePath baseStr:[TZMediaManager obtainBase64String:coverPath] duration:duration isVideo:isVideo];
                     completed(item, @"视频封面图片保存成功", YES);

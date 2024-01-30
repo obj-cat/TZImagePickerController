@@ -272,6 +272,7 @@
 
 @property (nonatomic, assign) BOOL isFromExtension; // 是否是来自扩展
 @property (nonatomic, copy)   NSString *fileExtensionPath; // 文件路径 - 不包含沙盒路径前缀和文件名的
+@property (nonatomic, assign) BOOL isSortExtension; // 是否排序
 
 /// Icon theme color, default is green color like wechat, the value is r:31 g:185 b:34. Currently only support image selection icon when showSelectedIndex is YES. If you need it, please set it as soon as possible
 /// icon主题色，默认是微信的绿色，值是r:31 g:185 b:34。目前仅支持showSelectedIndex为YES时的图片选中icon。如需要，请尽早设置它。

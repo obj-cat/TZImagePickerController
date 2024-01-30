@@ -19,6 +19,7 @@
 #import "TZImageRequestOperation.h"
 #import "TZAuthLimitedFooterTipView.h"
 #import <PhotosUI/PhotosUI.h>
+#import "SVProgressHUD.h"
 
 @interface TZPhotoPickerController ()<UICollectionViewDataSource,UICollectionViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate, PHPhotoLibraryChangeObserver> {
     NSMutableArray *_models;
@@ -563,7 +564,7 @@ static CGFloat itemMargin = 5;
     if ([tzImagePickerVc.pickerDelegate respondsToSelector:@selector(imagePickerController:didFinishPickingPhotos:sourceAssets:isSelectOriginalPhoto:infos:)]) {
         [tzImagePickerVc.pickerDelegate imagePickerController:tzImagePickerVc didFinishPickingPhotos:photos sourceAssets:assets isSelectOriginalPhoto:_isSelectOriginalPhoto infos:infoArr];
     }
-    
+    tzImagePickerVc.isFromExtension = YES;
     if (tzImagePickerVc.isFromExtension) {
         [self callFromExtensionWithPhotos:photos assets:assets];
     }
@@ -576,11 +577,25 @@ static CGFloat itemMargin = 5;
     }
 }
 
+- (void)showHUD {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [SVProgressHUD show];
+    });
+}
+
+- (void)hideHUD {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
+        });
+    });
+}
 
 - (void)callFromExtensionWithPhotos:(NSArray *)photos assets:(NSArray *)assets {
     TZImagePickerController *tzImagePickerVc = (TZImagePickerController *)self.navigationController;
     NSMutableArray *items = [@[] mutableCopy];
     
+//    [self showHUD];
     /// 1、组合队列
     dispatch_group_t group = dispatch_group_create();
     
@@ -598,16 +613,19 @@ static CGFloat itemMargin = 5;
     
     /// 结束统一处理
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-        
-        NSArray *array = [items sortedArrayUsingComparator:^NSComparisonResult(TZMedia  * _Nullable obj1, TZMedia   * _Nullable obj2) {
-            if (obj1.idx < obj2.idx) {
-                return NSOrderedAscending;
-            } else {
-                return NSOrderedDescending;
-            }
-        }];
-        
-//        NSArray *array = [NSArray arrayWithArray:items];
+        NSArray *array = @[];
+        if (tzImagePickerVc.isSortExtension) {
+            array = [items sortedArrayUsingComparator:^NSComparisonResult(TZMedia  * _Nullable obj1, TZMedia   * _Nullable obj2) {
+                if (obj1.idx < obj2.idx) {
+                    return NSOrderedAscending;
+                } else {
+                    return NSOrderedDescending;
+                }
+            }];
+        } else {
+            array = [NSArray arrayWithArray:items];
+        }
+//        [self hideHUD];
         [items removeAllObjects];
         if ([tzImagePickerVc.pickerDelegate respondsToSelector:@selector(imagePickerController:didFinishPickingPhotos:sourceAssets:isSelectOriginalPhoto:items:)]) {
             [tzImagePickerVc.pickerDelegate imagePickerController:tzImagePickerVc didFinishPickingPhotos:photos sourceAssets:assets isSelectOriginalPhoto:self->_isSelectOriginalPhoto items:array];

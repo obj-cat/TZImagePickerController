@@ -8,27 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4D57BDC72B675185003CAD71 /* TZExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D57BDC62B675185003CAD71 /* TZExtension.m */; };
-		4D9A7A932B68853200F7DBF5 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A7A832B68853100F7DBF5 /* SVRadialGradientLayer.m */; };
-		4D9A7A942B68853200F7DBF5 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A7A832B68853100F7DBF5 /* SVRadialGradientLayer.m */; };
-		4D9A7A952B68853200F7DBF5 /* SVIndefiniteAnimatedView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D9A7A842B68853100F7DBF5 /* SVIndefiniteAnimatedView.h */; };
-		4D9A7A962B68853200F7DBF5 /* SVProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D9A7A852B68853100F7DBF5 /* SVProgressHUD.h */; };
-		4D9A7A972B68853200F7DBF5 /* SVIndefiniteAnimatedView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D9A7A872B68853100F7DBF5 /* SVIndefiniteAnimatedView.h */; };
-		4D9A7A982B68853200F7DBF5 /* SVProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D9A7A882B68853100F7DBF5 /* SVProgressHUD.h */; };
-		4D9A7A992B68853200F7DBF5 /* SVRadialGradientLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D9A7A892B68853100F7DBF5 /* SVRadialGradientLayer.h */; };
-		4D9A7A9A2B68853200F7DBF5 /* SVProgressAnimatedView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D9A7A8A2B68853100F7DBF5 /* SVProgressAnimatedView.h */; };
-		4D9A7A9B2B68853200F7DBF5 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A7A8B2B68853100F7DBF5 /* SVProgressAnimatedView.m */; };
-		4D9A7A9C2B68853200F7DBF5 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A7A8B2B68853100F7DBF5 /* SVProgressAnimatedView.m */; };
-		4D9A7A9D2B68853200F7DBF5 /* SVProgressHUD-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 4D9A7A8C2B68853100F7DBF5 /* SVProgressHUD-Prefix.pch */; };
-		4D9A7A9E2B68853200F7DBF5 /* SVRadialGradientLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D9A7A8D2B68853100F7DBF5 /* SVRadialGradientLayer.h */; };
-		4D9A7A9F2B68853200F7DBF5 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 4D9A7A8E2B68853100F7DBF5 /* PrivacyInfo.xcprivacy */; };
-		4D9A7AA02B68853200F7DBF5 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 4D9A7A8E2B68853100F7DBF5 /* PrivacyInfo.xcprivacy */; };
-		4D9A7AA12B68853200F7DBF5 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A7A8F2B68853100F7DBF5 /* SVProgressHUD.m */; };
-		4D9A7AA22B68853200F7DBF5 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A7A8F2B68853100F7DBF5 /* SVProgressHUD.m */; };
-		4D9A7AA32B68853200F7DBF5 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A7A902B68853100F7DBF5 /* SVIndefiniteAnimatedView.m */; };
-		4D9A7AA42B68853200F7DBF5 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9A7A902B68853100F7DBF5 /* SVIndefiniteAnimatedView.m */; };
-		4D9A7AA52B68853200F7DBF5 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4D9A7A912B68853100F7DBF5 /* SVProgressHUD.bundle */; };
-		4D9A7AA62B68853200F7DBF5 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4D9A7A912B68853100F7DBF5 /* SVProgressHUD.bundle */; };
-		4D9A7AA72B68853200F7DBF5 /* SVProgressAnimatedView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D9A7A922B68853100F7DBF5 /* SVProgressAnimatedView.h */; };
 		570A348C26D7275C000EEF2E /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 570A348B26D7275C000EEF2E /* Photos.framework */; };
 		570A348E26D72762000EEF2E /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 570A348D26D72762000EEF2E /* PhotosUI.framework */; };
 		570A349026D72768000EEF2E /* PhotosUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 570A348F26D72768000EEF2E /* PhotosUI.framework */; };
@@ -146,21 +125,6 @@
 /* Begin PBXFileReference section */
 		4D57BDC52B675185003CAD71 /* TZExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TZExtension.h; sourceTree = "<group>"; };
 		4D57BDC62B675185003CAD71 /* TZExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TZExtension.m; sourceTree = "<group>"; };
-		4D9A7A832B68853100F7DBF5 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
-		4D9A7A842B68853100F7DBF5 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
-		4D9A7A852B68853100F7DBF5 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
-		4D9A7A872B68853100F7DBF5 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
-		4D9A7A882B68853100F7DBF5 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
-		4D9A7A892B68853100F7DBF5 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
-		4D9A7A8A2B68853100F7DBF5 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
-		4D9A7A8B2B68853100F7DBF5 /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressAnimatedView.m; sourceTree = "<group>"; };
-		4D9A7A8C2B68853100F7DBF5 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
-		4D9A7A8D2B68853100F7DBF5 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
-		4D9A7A8E2B68853100F7DBF5 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		4D9A7A8F2B68853100F7DBF5 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
-		4D9A7A902B68853100F7DBF5 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
-		4D9A7A912B68853100F7DBF5 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
-		4D9A7A922B68853100F7DBF5 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
 		570A348B26D7275C000EEF2E /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/System/Library/Frameworks/Photos.framework; sourceTree = DEVELOPER_DIR; };
 		570A348D26D72762000EEF2E /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/System/iOSSupport/System/Library/Frameworks/PhotosUI.framework; sourceTree = DEVELOPER_DIR; };
 		570A348F26D72768000EEF2E /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = System/Library/Frameworks/PhotosUI.framework; sourceTree = SDKROOT; };
@@ -277,36 +241,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4D9A7A822B68853100F7DBF5 /* SVProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				4D9A7A832B68853100F7DBF5 /* SVRadialGradientLayer.m */,
-				4D9A7A842B68853100F7DBF5 /* SVIndefiniteAnimatedView.h */,
-				4D9A7A852B68853100F7DBF5 /* SVProgressHUD.h */,
-				4D9A7A862B68853100F7DBF5 /* include */,
-				4D9A7A8B2B68853100F7DBF5 /* SVProgressAnimatedView.m */,
-				4D9A7A8C2B68853100F7DBF5 /* SVProgressHUD-Prefix.pch */,
-				4D9A7A8D2B68853100F7DBF5 /* SVRadialGradientLayer.h */,
-				4D9A7A8E2B68853100F7DBF5 /* PrivacyInfo.xcprivacy */,
-				4D9A7A8F2B68853100F7DBF5 /* SVProgressHUD.m */,
-				4D9A7A902B68853100F7DBF5 /* SVIndefiniteAnimatedView.m */,
-				4D9A7A912B68853100F7DBF5 /* SVProgressHUD.bundle */,
-				4D9A7A922B68853100F7DBF5 /* SVProgressAnimatedView.h */,
-			);
-			path = SVProgressHUD;
-			sourceTree = "<group>";
-		};
-		4D9A7A862B68853100F7DBF5 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				4D9A7A872B68853100F7DBF5 /* SVIndefiniteAnimatedView.h */,
-				4D9A7A882B68853100F7DBF5 /* SVProgressHUD.h */,
-				4D9A7A892B68853100F7DBF5 /* SVRadialGradientLayer.h */,
-				4D9A7A8A2B68853100F7DBF5 /* SVProgressAnimatedView.h */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
 		5B7A0D4F288691E7002B2603 /* Location */ = {
 			isa = PBXGroup;
 			children = (
@@ -404,7 +338,6 @@
 		900EEFF51C2BBF7600EA709B /* TZImagePickerController */ = {
 			isa = PBXGroup;
 			children = (
-				4D9A7A822B68853100F7DBF5 /* SVProgressHUD */,
 				6D5358CB1D64600F00928CC6 /* NSBundle+TZImagePicker.h */,
 				6D5358CC1D64600F00928CC6 /* NSBundle+TZImagePicker.m */,
 				6DC358641CC8BAE300898D29 /* Resources */,
@@ -496,26 +429,17 @@
 				9F763A6B1FA0731E00D9E526 /* TZImagePickerController.h in Headers */,
 				9F763A6D1FA0733700D9E526 /* NSBundle+TZImagePicker.h in Headers */,
 				9F763A6C1FA0733100D9E526 /* TZAssetModel.h in Headers */,
-				4D9A7A972B68853200F7DBF5 /* SVIndefiniteAnimatedView.h in Headers */,
 				9F763A731FA0741D00D9E526 /* TZVideoPlayerController.h in Headers */,
 				9F763A741FA0741D00D9E526 /* TZGifPhotoPreviewController.h in Headers */,
-				4D9A7A9A2B68853200F7DBF5 /* SVProgressAnimatedView.h in Headers */,
-				4D9A7A962B68853200F7DBF5 /* SVProgressHUD.h in Headers */,
-				4D9A7A952B68853200F7DBF5 /* SVIndefiniteAnimatedView.h in Headers */,
-				4D9A7AA72B68853200F7DBF5 /* SVProgressAnimatedView.h in Headers */,
 				9005E2B5257A462E002A8682 /* UIView+TZLayout.h in Headers */,
 				9F763A761FA0741D00D9E526 /* TZImageManager.h in Headers */,
 				908D115A2887ED8000DD212E /* TZLocationManager.h in Headers */,
 				9F763A711FA0741D00D9E526 /* TZPhotoPreviewController.h in Headers */,
 				9F763A721FA0741D00D9E526 /* TZPhotoPreviewCell.h in Headers */,
-				4D9A7A992B68853200F7DBF5 /* SVRadialGradientLayer.h in Headers */,
-				4D9A7A9E2B68853200F7DBF5 /* SVRadialGradientLayer.h in Headers */,
 				9F763A701FA0741D00D9E526 /* TZAssetCell.h in Headers */,
 				9F763A6F1FA0741D00D9E526 /* TZPhotoPickerController.h in Headers */,
 				9F763A751FA0741D00D9E526 /* TZProgressView.h in Headers */,
 				9F763A771FA0741D00D9E526 /* TZImageCropManager.h in Headers */,
-				4D9A7A982B68853200F7DBF5 /* SVProgressHUD.h in Headers */,
-				4D9A7A9D2B68853200F7DBF5 /* SVProgressHUD-Prefix.pch in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -656,13 +580,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				90020E1320F8840800D3AB10 /* TZImagePickerController.podspec in Resources */,
-				4D9A7AA52B68853200F7DBF5 /* SVProgressHUD.bundle in Resources */,
 				90A74B85203287C200D84C2A /* Localizable.strings in Resources */,
 				900E658F1C2BB8D5003D9A9E /* LaunchScreen.storyboard in Resources */,
 				90020E1520F8840F00D3AB10 /* README.md in Resources */,
 				6DC358661CC8BAFD00898D29 /* TZImagePickerController.bundle in Resources */,
 				900E658C1C2BB8D5003D9A9E /* Assets.xcassets in Resources */,
-				4D9A7A9F2B68853200F7DBF5 /* PrivacyInfo.xcprivacy in Resources */,
 				900E658A1C2BB8D5003D9A9E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -685,8 +607,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D9A7AA02B68853200F7DBF5 /* PrivacyInfo.xcprivacy in Resources */,
-				4D9A7AA62B68853200F7DBF5 /* SVProgressHUD.bundle in Resources */,
 				9F763A6E1FA0734800D9E526 /* TZImagePickerController.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -703,20 +623,16 @@
 				9038D5911C3974F0007DE549 /* TZTestCell.m in Sources */,
 				900EF00F1C2C0B1100EA709B /* TZAssetModel.m in Sources */,
 				900EEFFE1C2BD58B00EA709B /* TZPhotoPickerController.m in Sources */,
-				4D9A7A9B2B68853200F7DBF5 /* SVProgressAnimatedView.m in Sources */,
 				900EF0021C2BD7E400EA709B /* TZAssetCell.m in Sources */,
 				6DD0502B1DF659ED0057C78D /* TZProgressView.m in Sources */,
-				4D9A7A932B68853200F7DBF5 /* SVRadialGradientLayer.m in Sources */,
 				4D57BDC72B675185003CAD71 /* TZExtension.m in Sources */,
 				6D32B9BD1CD83640005CE1E0 /* LxGridViewFlowLayout.m in Sources */,
-				4D9A7AA32B68853200F7DBF5 /* SVIndefiniteAnimatedView.m in Sources */,
 				57DD378A26D61592005090FF /* TZAuthLimitedFooterTipView.m in Sources */,
 				6D4608311DFFC60D004FB009 /* TZGifPhotoPreviewController.m in Sources */,
 				900EF0161C2C134900EA709B /* TZPhotoPreviewCell.m in Sources */,
 				900E65871C2BB8D5003D9A9E /* ViewController.m in Sources */,
 				90CE84AE1C3A89EF003D0779 /* TZImageManager.m in Sources */,
 				901F2295215CABD600F604ED /* FLAnimatedImage.m in Sources */,
-				4D9A7AA12B68853200F7DBF5 /* SVProgressHUD.m in Sources */,
 				908D11582887ED8000DD212E /* TZLocationManager.m in Sources */,
 				900E65841C2BB8D5003D9A9E /* AppDelegate.m in Sources */,
 				9005E2B3257A462E002A8682 /* UIView+TZLayout.m in Sources */,
@@ -761,16 +677,12 @@
 				9F763A541FA072E500D9E526 /* TZAssetCell.m in Sources */,
 				9F763A561FA072E500D9E526 /* TZAssetModel.m in Sources */,
 				9F763A581FA072E500D9E526 /* TZPhotoPreviewController.m in Sources */,
-				4D9A7AA42B68853200F7DBF5 /* SVIndefiniteAnimatedView.m in Sources */,
 				9005E2B4257A462E002A8682 /* UIView+TZLayout.m in Sources */,
 				9F763A5A1FA072E500D9E526 /* TZPhotoPreviewCell.m in Sources */,
-				4D9A7A9C2B68853200F7DBF5 /* SVProgressAnimatedView.m in Sources */,
-				4D9A7A942B68853200F7DBF5 /* SVRadialGradientLayer.m in Sources */,
 				9F763A5C1FA072E500D9E526 /* TZVideoPlayerController.m in Sources */,
 				9F763A5E1FA072E500D9E526 /* TZGifPhotoPreviewController.m in Sources */,
 				9F763A601FA072E500D9E526 /* TZProgressView.m in Sources */,
 				908D11592887ED8000DD212E /* TZLocationManager.m in Sources */,
-				4D9A7AA22B68853200F7DBF5 /* SVProgressHUD.m in Sources */,
 				9F763A621FA072E500D9E526 /* TZImageManager.m in Sources */,
 				9F763A641FA072E500D9E526 /* TZImageCropManager.m in Sources */,
 				9F763A6A1FA072E500D9E526 /* NSBundle+TZImagePicker.m in Sources */,

@@ -577,25 +577,9 @@ static CGFloat itemMargin = 5;
     }
 }
 
-- (void)showHUD {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [SVProgressHUD show];
-    });
-}
-
-- (void)hideHUD {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [SVProgressHUD dismiss];
-        });
-    });
-}
-
 - (void)callFromExtensionWithPhotos:(NSArray *)photos assets:(NSArray *)assets {
     TZImagePickerController *tzImagePickerVc = (TZImagePickerController *)self.navigationController;
     NSMutableArray *items = [@[] mutableCopy];
-    
-//    [self showHUD];
     /// 1、组合队列
     dispatch_group_t group = dispatch_group_create();
     
@@ -625,7 +609,6 @@ static CGFloat itemMargin = 5;
         } else {
             array = [NSArray arrayWithArray:items];
         }
-//        [self hideHUD];
         [items removeAllObjects];
         if ([tzImagePickerVc.pickerDelegate respondsToSelector:@selector(imagePickerController:didFinishPickingPhotos:sourceAssets:isSelectOriginalPhoto:items:)]) {
             [tzImagePickerVc.pickerDelegate imagePickerController:tzImagePickerVc didFinishPickingPhotos:photos sourceAssets:assets isSelectOriginalPhoto:self->_isSelectOriginalPhoto items:array];

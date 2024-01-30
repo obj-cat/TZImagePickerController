@@ -19,7 +19,6 @@
 #import "TZImageRequestOperation.h"
 #import "TZAuthLimitedFooterTipView.h"
 #import <PhotosUI/PhotosUI.h>
-#import "SVProgressHUD.h"
 
 @interface TZPhotoPickerController ()<UICollectionViewDataSource,UICollectionViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate, PHPhotoLibraryChangeObserver> {
     NSMutableArray *_models;

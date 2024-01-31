@@ -563,7 +563,6 @@ static CGFloat itemMargin = 5;
     if ([tzImagePickerVc.pickerDelegate respondsToSelector:@selector(imagePickerController:didFinishPickingPhotos:sourceAssets:isSelectOriginalPhoto:infos:)]) {
         [tzImagePickerVc.pickerDelegate imagePickerController:tzImagePickerVc didFinishPickingPhotos:photos sourceAssets:assets isSelectOriginalPhoto:_isSelectOriginalPhoto infos:infoArr];
     }
-    tzImagePickerVc.isFromExtension = YES;
     if (tzImagePickerVc.isFromExtension) {
         [self callFromExtensionWithPhotos:photos assets:assets];
     }
